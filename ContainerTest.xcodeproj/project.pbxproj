@@ -395,6 +395,7 @@
 				07A9BA131959CF72008CF02F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07A9BA141959CF72008CF02F /* Build configuration list for PBXNativeTarget "ContainerTestTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +404,7 @@
 				07A9BA161959CF72008CF02F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

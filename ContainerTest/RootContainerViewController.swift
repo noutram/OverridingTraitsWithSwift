@@ -10,63 +10,14 @@ import UIKit
 
 class RootContainerViewController: UIViewController {
     
+    @IBOutlet var containerView: UIView
     
-    //Underlying instance variable (would ideally be private)
-    var _childVC : UIViewController? {
-        willSet {
-            
-            //REMOVE OLD VC
-            println("Property will set")
-            if (_childVC != nil) {
-                _childVC!.willMoveToParentViewController(nil)
-                self.setOverrideTraitCollection(nil, forChildViewController: _childVC)
-                _childVC!.view.removeFromSuperview()
-                _childVC!.removeFromParentViewController()
-            }
-            if (newValue) {
-                self.addChildViewController(newValue)
-            }
-            
-        }
-    
-        //I can't see a way to 'stop' the value being set to the same controller - hence the computed property
-    
-        didSet {
-            
-            //ADD NEW VC
-            println("Property did set")
-            if (_childVC) {
-//                var views  = NSDictionaryOfVariableBindings(self.view)    .. NOT YET SUPPORTED (NSDictionary bridging not yet available)
-                
-                //Add subviews + constraints
-                _childVC!.view.setTranslatesAutoresizingMaskIntoConstraints(false)       //For now - until I add my own constraints
-                self.view.addSubview(_childVC!.view)
-                let views = ["view" : _childVC!.view] as NSMutableDictionary
-                let layoutOpts = NSLayoutFormatOptions(0)
-                let lc1 : AnyObject[] = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|",  options: layoutOpts, metrics: NSDictionary(), views: views)
-                let lc2 : AnyObject[] = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: layoutOpts, metrics: NSDictionary(), views: views)
-                self.view.addConstraints(lc1)
-                self.view.addConstraints(lc2)
-                
-                //Forward messages to child
-                _childVC!.didMoveToParentViewController(self)
-            }
-        }
-    }
-
-
     //Computed property - this is the property that must be used to prevent setting the same value twice
     //unless there is another way of doing this?
     var childVC : UIViewController? {
         get {
-            return _childVC
+            return self.childViewControllers[0] as? UISplitViewController
         }
-        set(suggestedVC) {
-            if (suggestedVC != _childVC) {
-                _childVC = suggestedVC
-            }
-        }
-    
     }
     
     //This is the magic - override UI Traits in landscape mode
@@ -103,7 +54,8 @@ class RootContainerViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.overrideTraitsForChildVC(self.view.bounds.size)
+        let svc = self.childVC as UISplitViewController
+        svc.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
     }
 
     override func didReceiveMemoryWarning() {

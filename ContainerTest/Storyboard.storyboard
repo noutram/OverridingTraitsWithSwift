@@ -36,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqw-3b-GWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744" y="128"/>
+            <point key="canvasLocation" x="1783" y="1191"/>
         </scene>
         <!--Master Table View Controller-->
         <scene sceneID="zp1-NT-FCC">
@@ -60,10 +60,40 @@
                             <outlet property="delegate" destination="hOE-tZ-CVO" id="VJK-Ut-s17"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="CaF-co-G0z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMx-r1-tm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1278" y="128"/>
+            <point key="canvasLocation" x="2394" y="533"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yi3-ks-8KW">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gpY-I6-Wvz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R8X-0L-5MY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hOE-tZ-CVO" kind="relationship" relationship="rootViewController" id="gj4-Ok-aby"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LjO-fO-dNj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="533"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="h7v-CT-ion">
+            <objects>
+                <splitViewController storyboardIdentifier="SplitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FBG-hG-pKz" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="gpY-I6-Wvz" kind="relationship" relationship="masterViewController" id="A9U-G4-zvi"/>
+                        <segue destination="SQL-eE-3c8" kind="relationship" relationship="detailViewController" id="P2g-iy-Kid"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5TC-FU-ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1083" y="799"/>
         </scene>
         <!--Root Container View Controller-->
         <scene sceneID="4lt-XQ-7Ff">
@@ -83,18 +113,31 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8U-yo-RSP">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                                <connections>
+                                    <segue destination="FBG-hG-pKz" kind="embed" identifier="embed" id="SED-lK-4oX"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="t8U-yo-RSP" secondAttribute="trailing" id="0Fk-1H-zbX"/>
                             <constraint firstAttribute="centerY" secondItem="UsK-mY-bBN" secondAttribute="centerY" id="MEF-qk-ySg"/>
+                            <constraint firstItem="6LC-li-DPy" firstAttribute="top" secondItem="t8U-yo-RSP" secondAttribute="bottom" id="MN1-EP-hqc"/>
                             <constraint firstAttribute="centerX" secondItem="UsK-mY-bBN" secondAttribute="centerX" id="Pxx-GA-YrV"/>
+                            <constraint firstItem="t8U-yo-RSP" firstAttribute="top" secondItem="8Ku-0B-xUF" secondAttribute="top" id="oJJ-KB-eF2"/>
+                            <constraint firstItem="t8U-yo-RSP" firstAttribute="leading" secondItem="8Ku-0B-xUF" secondAttribute="leading" id="v9L-PC-P7P"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="t8U-yo-RSP" id="fbq-7E-AqG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxV-tg-zJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="676"/>
+            <point key="canvasLocation" x="377" y="799"/>
         </scene>
     </scenes>
 </document>
