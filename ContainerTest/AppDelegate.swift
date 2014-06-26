@@ -9,15 +9,37 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
                             
     var window: UIWindow?
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.whiteColor()
+        
+        //Get storyboard
+        let sb = UIStoryboard(name: "Storyboard", bundle: nil)
+        
+        let container = sb.instantiateViewControllerWithIdentifier("RootContainerViewController") as RootContainerViewController
+        let detail    = sb.instantiateViewControllerWithIdentifier("DetailViewController")        as DetailViewController
+        let master    = sb.instantiateViewControllerWithIdentifier("MasterTableViewController")   as MasterTableViewController
+        detail.message = "No data to display"
+        
+        let nav = UINavigationController(rootViewController: master)
+        let splitVC = UISplitViewController();
+        splitVC.viewControllers = [nav, detail]
+        splitVC.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
+        splitVC.delegate = self
+        
+        //The root view controller is a container which overrides size classes
+        container.childVC = splitVC
+        
+        self.window!.rootViewController = container
         self.window!.makeKeyAndVisible()
         return true
     }

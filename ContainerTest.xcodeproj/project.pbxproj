@@ -10,6 +10,10 @@
 		07A9BA001959CF72008CF02F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9B9FF1959CF72008CF02F /* AppDelegate.swift */; };
 		07A9BA021959CF72008CF02F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07A9BA011959CF72008CF02F /* Images.xcassets */; };
 		07A9BA0E1959CF72008CF02F /* ContainerTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9BA0D1959CF72008CF02F /* ContainerTestTests.swift */; };
+		07A9BA181959D078008CF02F /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A9BA171959D078008CF02F /* Storyboard.storyboard */; };
+		07A9BA1A1959D14B008CF02F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9BA191959D14B008CF02F /* DetailViewController.swift */; };
+		07A9BA1C1959D4C3008CF02F /* RootContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9BA1B1959D4C3008CF02F /* RootContainerViewController.swift */; };
+		07A9BA1E1959D617008CF02F /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9BA1D1959D617008CF02F /* MasterTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +34,10 @@
 		07A9BA071959CF72008CF02F /* ContainerTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContainerTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A9BA0C1959CF72008CF02F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07A9BA0D1959CF72008CF02F /* ContainerTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTestTests.swift; sourceTree = "<group>"; };
+		07A9BA171959D078008CF02F /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		07A9BA191959D14B008CF02F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		07A9BA1B1959D4C3008CF02F /* RootContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootContainerViewController.swift; sourceTree = "<group>"; };
+		07A9BA1D1959D617008CF02F /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,10 @@
 				07A9B9FF1959CF72008CF02F /* AppDelegate.swift */,
 				07A9BA011959CF72008CF02F /* Images.xcassets */,
 				07A9B9FD1959CF72008CF02F /* Supporting Files */,
+				07A9BA171959D078008CF02F /* Storyboard.storyboard */,
+				07A9BA1B1959D4C3008CF02F /* RootContainerViewController.swift */,
+				07A9BA1D1959D617008CF02F /* MasterTableViewController.swift */,
+				07A9BA191959D14B008CF02F /* DetailViewController.swift */,
 			);
 			path = ContainerTest;
 			sourceTree = "<group>";
@@ -183,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07A9BA021959CF72008CF02F /* Images.xcassets in Resources */,
+				07A9BA181959D078008CF02F /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +214,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				07A9BA001959CF72008CF02F /* AppDelegate.swift in Sources */,
+				07A9BA1E1959D617008CF02F /* MasterTableViewController.swift in Sources */,
+				07A9BA1C1959D4C3008CF02F /* RootContainerViewController.swift in Sources */,
+				07A9BA1A1959D14B008CF02F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
