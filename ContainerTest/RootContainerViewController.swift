@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootContainerViewController: UIViewController {
+class RootContainerViewController: UIViewController, UISplitViewControllerDelegate {
     
     @IBOutlet var containerView: UIView
     
@@ -56,6 +56,7 @@ class RootContainerViewController: UIViewController {
         // Do any additional setup after loading the view.
         let svc = self.childVC as UISplitViewController
         svc.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
+        svc.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +64,7 @@ class RootContainerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
 
     /*
     // #pragma mark - Navigation
@@ -73,5 +75,35 @@ class RootContainerViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+
+    // DELEGATE METHODS
+    
+    func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController!
+    {
+        println("Collapse:")
+        return splitViewController.viewControllers[0] as? UINavigationController
+    }
+    func primaryViewControllerForExpandingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController!
+    {
+        println("Expand: \(splitViewController.viewControllers)")
+        return splitViewController.viewControllers[0] as? UINavigationController
+    }
+    func splitViewController(splitViewController: UISplitViewController!, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool
+    {
+        
+        //Return false to let the split view controller try and incorporate the secondary view controller’s content into the collapsed interface
+        //Return true to indicate that you do not want the split view controller to do anything with the secondary view controller.
+
+        return true //Allow to collapse fully (do not try and incorporate detail in master)
+    }
+    func splitViewController(splitViewController: UISplitViewController!, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController!) -> UIViewController!
+    {
+        //nil is the default
+        return nil
+        
+        //If there is no content, we could return a different view controller here and override (e.g. a placeholder)
+    }
+    
 
 }
