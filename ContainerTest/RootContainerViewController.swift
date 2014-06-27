@@ -89,20 +89,25 @@ class RootContainerViewController: UIViewController, UISplitViewControllerDelega
         println("Expand: \(splitViewController.viewControllers)")
         return splitViewController.viewControllers[0] as? UINavigationController
     }
+    
+    //Override the behaviour when collapsing
     func splitViewController(splitViewController: UISplitViewController!, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool
     {
         
-        //Return false to let the split view controller try and incorporate the secondary view controller’s content into the collapsed interface
-        //Return true to indicate that you do not want the split view controller to do anything with the secondary view controller.
+        //Return false to stop collapsing - i.e. let the split view controller try and incorporate the secondary view controller’s content into the collapsed interface
+        //Return true to indicate that you want to fully collase - i.e. don't ask the split view controller to try and merge content in master-detail.
 
         return true //Allow to collapse fully (do not try and incorporate detail in master)
     }
+    
+    //Override the behaviour when expanding
     func splitViewController(splitViewController: UISplitViewController!, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController!) -> UIViewController!
     {
-        //nil is the default
+        //nil is the default - in this case - pop the controller off the navigation stack
         return nil
         
-        //If there is no content, we could return a different view controller here and override (e.g. a placeholder)
+        //We could return a different view controller here and override the secondary controller - try uncommenting the following
+//        return UITableViewController()
     }
     
 
