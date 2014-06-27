@@ -36,40 +36,28 @@ class MasterTableViewController: UITableViewController {
 
     // #pragma mark - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-
-    override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 2
-    }
-
     
-    override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-        let cell = tableView!.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-        cell.textLabel.text = String("Row \(indexPath!.row)")
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
-    {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        println("Selection: \(indexPath)")
-        
-        //Dynamically pick a view controller to display as the detail view
-        var dvc = self.storyboard.instantiateViewControllerWithIdentifier("DetailViewController") as DetailViewController
-        dvc.message = "You picked row \(indexPath.row)"
-        
-        //Now the clever bit
-        self.showDetailViewController(dvc, sender: self)
-    }
+//    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+//    {
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//
+//        println("Selection: \(indexPath)")
+//        
+//        //Dynamically pick a view controller to display as the detail view
+//        var dvc : UIViewController?
+//        switch indexPath.row {
+//            case 0:
+//                dvc = self.storyboard.instantiateViewControllerWithIdentifier("DetailController1") as? UIViewController
+//            case 1:
+//                dvc = self.storyboard.instantiateViewControllerWithIdentifier("DetailController2") as? UIViewController
+//            default:
+//                dvc = self.storyboard.instantiateViewControllerWithIdentifier("DetailViewController") as DetailViewController
+//                (dvc as DetailViewController).message  = "No Content Selected"
+//        }
+//        
+//        //Now the clever bit
+//        self.showDetailViewController(dvc, sender: self)
+//    }
 
     /*
     // Override to support conditional editing of the table view.
