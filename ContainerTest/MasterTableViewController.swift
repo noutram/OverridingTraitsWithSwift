@@ -62,6 +62,7 @@ class MasterTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         println("Selection: \(indexPath)")
+        //Dynamically pick a view controller to display as the detail view
         var dvc = self.storyboard.instantiateViewControllerWithIdentifier("DetailViewController") as DetailViewController
         dvc.message = "You picked row \(indexPath.row)"
         
