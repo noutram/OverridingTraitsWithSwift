@@ -12,3 +12,5 @@ The master branch sets up the navigation stack using code. This includes boiler 
 
 The "01-UsingStoryBoard" branch removes much of the boiler-plate code for the view controller container. This is rather convenient, but is now tied to 'containing' a UISplitViewController. I would need to re-think this a bit to make it more generic.
 
+The "02-StaticMasterTable" branch removes uses a static table as a master view, and shows seperate detail view controllers for each selection (as opposed to the same controller, but with different data)
+
