@@ -66,6 +66,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    // DELEGATE METHODS
+    
+    func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController!
+    {
+        println("Collapse:")
+        return splitViewController.viewControllers[0] as? UINavigationController
+    }
+    func primaryViewControllerForExpandingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController!
+    {
+        println("Expand: \(splitViewController.viewControllers)")
+        return splitViewController.viewControllers[0] as? UINavigationController
+    }
+    
+    //Override the behaviour when collapsing
+    func splitViewController(splitViewController: UISplitViewController!, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool
+    {
+        
+        //Return false to stop collapsing - i.e. let the split view controller try and incorporate the secondary view controller’s content into the collapsed interface
+        //Return true to indicate that you want to fully collase - i.e. don't ask the split view controller to try and merge content in master-detail.
+        
+        return true //Allow to collapse fully (do not try and incorporate detail in master)
+    }
+    
+    //Override the behaviour when expanding
+    func splitViewController(splitViewController: UISplitViewController!, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController!) -> UIViewController!
+    {
+        //nil is the default - in this case - pop the controller off the navigation stack
+        return nil
+        
+        //We could return a different view controller here and override the secondary controller - try uncommenting the following
+        //        return UITableViewController()
+    }
 }
 
