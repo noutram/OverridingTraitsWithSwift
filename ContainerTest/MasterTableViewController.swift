@@ -10,14 +10,6 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
 
-    init(style: UITableViewStyle) {
-        super.init(style: style)
-        // Custom initialization
-    }
-    
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder: aDecoder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

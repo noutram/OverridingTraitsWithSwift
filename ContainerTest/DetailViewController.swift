@@ -12,24 +12,14 @@ class DetailViewController: UIViewController {
 
     var message : String?
     
-    @IBOutlet var label: UILabel
+    @IBOutlet var label: UILabel?
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        // Custom initialization
-    }
     
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder: aDecoder)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        if let msg = self.message {
-            self.label.text = msg
-        }
+        self.label?.text = self.message
     }
 
     override func didReceiveMemoryWarning() {

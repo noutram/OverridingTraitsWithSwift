@@ -10,7 +10,7 @@ import UIKit
 
 class RootContainerViewController: UIViewController, UISplitViewControllerDelegate {
     
-    @IBOutlet var containerView: UIView
+    @IBOutlet var containerView: UIView?
     
     //Computed property - this is the property that must be used to prevent setting the same value twice
     //unless there is another way of doing this?
@@ -40,15 +40,6 @@ class RootContainerViewController: UIViewController, UISplitViewControllerDelega
         }
     }
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        // Custom initialization
-
-    }
-    
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder: aDecoder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
