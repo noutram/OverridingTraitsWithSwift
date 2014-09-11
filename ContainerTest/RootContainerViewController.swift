@@ -21,25 +21,29 @@ class RootContainerViewController: UIViewController, UISplitViewControllerDelega
     }
     
     //This is the magic - override UI Traits in landscape mode
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!)
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
     {
         self.overrideTraitsForChildVC(size)
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     func overrideTraitsForChildVC(size:CGSize) {
+        if self.childVC == nil {
+            return
+        }
+        var traits : UITraitCollection?
+        
         if (size.width>320.0) {
             println("Going regular width");
             let tc1 = self.traitCollection;
             let tc2 = UITraitCollection(horizontalSizeClass: UIUserInterfaceSizeClass.Regular)
-            let traits = UITraitCollection(traitsFromCollections: [tc1, tc2])
-            self.setOverrideTraitCollection(traits, forChildViewController: self.childVC)
+            traits = UITraitCollection(traitsFromCollections: [tc1, tc2])
+            println("traits: \(traits)")
         } else {
             println("Going default");
-            self.setOverrideTraitCollection(nil, forChildViewController: self.childVC)
         }
+        self.setOverrideTraitCollection(traits, forChildViewController: self.childVC!)
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,16 +73,15 @@ class RootContainerViewController: UIViewController, UISplitViewControllerDelega
 
 
     // DELEGATE METHODS
-    
     func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController!
     {
         println("Collapse:")
-        return splitViewController.viewControllers[0] as? UINavigationController
+        return splitViewController.viewControllers[0] as UINavigationController
     }
     func primaryViewControllerForExpandingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController!
     {
         println("Expand: \(splitViewController.viewControllers)")
-        return splitViewController.viewControllers[0] as? UINavigationController
+        return splitViewController.viewControllers[0] as UINavigationController
     }
     
     //Override the behaviour when collapsing
